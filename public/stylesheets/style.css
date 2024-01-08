@@ -1,0 +1,31 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+html , body{
+    height: 100%;
+     width: 100%;
+}
+.login{
+  background-image: url("https://wallpapercave.com/wp/wp9764093.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.err{
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+

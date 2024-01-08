@@ -1,32 +1,6 @@
 <% include ./partials/header.ejs %>
 <div class="w-full h-screen flex items-center bg-gray-900  flex-col">
-  <header class="bg-gray-800 p-4 w-full  border-b-2 border-white">
-    <div class="container mx-auto flex items-center justify-between">
-      <div>
-        <img
-          class="w-32"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pinterest_Logo.svg/1200px-Pinterest_Logo.svg.png"
-          alt="Pinterest Logo"
-        />
-      </div>
-
-      <div class="flex items-center space-x-4">
-        <!-- Search bar -->
-        <input
-          type="text"
-          placeholder="Search"
-          class="px-2 py-1 border border-gray-600 rounded-md focus:outline-none"
-        />
-
-        <!-- Logout button -->
-        <a
-          href="/login"
-          class="text-white bg-red-400 px-2 py-1 flex items-center justify-center text-white rounded-md hover:bg-red-500"
-          >Logout</a
-        >
-      </div>
-    </div>
-  </header>
+ 
   <div class="flex flex-col items-center justify-center mt-4">
     <div class="relative">
       <span id="upload" class="cursor-pointer bg-white w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
@@ -56,14 +30,18 @@
     </div>
   </div>
   <!-- cards -->
-  <div class="cards justify-center items-center flex flex-wrap gap-10 mt-10">
-    <div class="card">
-      <div class="w-52 h-40 bg-gray-400 rounded-lg overflow-hidden">
-        <img class="object-cover w-full h-full" src="https://i.pinimg.com/236x/e9/b6/8b/e9b68bff54a5349786a4340eeed5b453.jpg" alt="">
+  <div class="w-full  flex justify-start p-4">
+    <div class="cards justify-center items-center flex flex-wrap gap-10 mt-10">
+      <div class="card">
+        <div class="w-52 h-40 bg-gray-400 rounded-lg overflow-hidden">
+          <img class="object-cover w-full h-full" src="https://i.pinimg.com/236x/e9/b6/8b/e9b68bff54a5349786a4340eeed5b453.jpg" alt="">
+        </div>
+        <h3 class="text-xl font-semibold mt-3 text-white">All pins</h3>
+        <h5 class="text-sm font-medium text-gray-400">28 pins</h5>
       </div>
-      <h3 class="text-xl font-semibold mt-3 text-white">All pins</h3>
-      <h5 class="text-sm font-medium text-gray-400">28 pins</h5>
+     
     </div>
+
   </div>
 </div>
 <script>

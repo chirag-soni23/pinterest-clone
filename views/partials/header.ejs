@@ -12,4 +12,33 @@
     <title>Your Title</title>
 </head>
 <body>
-    
+  <% if(nav==true){ %>
+    <header class="sticky z-10 top-0 left-0 right-0 bg-gray-800 p-4 w-full  border-b-2 border-white">
+      <div class="container mx-auto flex items-center justify-between">
+        <div>
+          <img
+            class="w-32"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pinterest_Logo.svg/1200px-Pinterest_Logo.svg.png"
+            alt="Pinterest Logo"
+          />
+        </div>
+  
+        <div class="flex items-center space-x-4">
+          <!-- Search bar -->
+          <input
+            type="text"
+            placeholder="Search"
+            class="px-2 py-1 border border-gray-600 rounded-md focus:outline-none"
+          />
+  
+          <!-- Logout button -->
+          <a
+            href="/login"
+            class="text-white bg-red-400 px-2 py-1 flex items-center justify-center text-white rounded-md hover:bg-red-500"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </header>    
+ <% } %>
+   

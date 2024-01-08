@@ -37,21 +37,21 @@ router.post("/upload" ,isLoggedin,upload.single('image'),async(req,res,next)=>{
 
 // get methods
 router.get('/login', function(req, res, next) {
-  res.render('login',{error: req.flash('error')});
+  res.render('login',{error: req.flash('error'),nav:false});
 });
 router.get('/register', function(req, res, next) {
-  res.render('register');
+  res.render('register',{nav:false});
 });
 router.get("/profile",isLoggedin,async(req,res)=>{
   const user = await userModel.findOne({
     username: req.session.passport.user
   })
-  res.render('profile',{user})
+  res.render('profile',{user,nav:true})
 })
 router.get("/logout",(req,res,next)=>{
   req.logout(function(err) {
     if (err) { return next(err); }
-    res.redirect('/');
+    res.redirect('/login');
   });
 
 })

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("./users.js");
+const postModel = require("./post.js")
 const passport = require('passport');
 const localStrategy = require("passport-local")
 const upload = require("./multer.js")
@@ -33,8 +34,19 @@ router.post("/upload" ,isLoggedin,upload.single('image'),async(req,res,next)=>{
   await user.save()
   res.redirect("/profile")
 })
-
-
+router.post("/createpost" ,isLoggedin,upload.single('postimage'),async(req,res,next)=>{
+  const user = await userModel.findOne({username: req.session.passport.user})
+  // user.profileImage = req.file.filename;
+  const post  = postModel.create({
+    user: user._id,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.file.filename
+  })
+  user.posts.push(post._id)
+  await user.save()
+  res.redirect("/profile")
+})
 // get methods
 router.get('/', function(req, res, next) {
   res.render('login',{error: req.flash('error'),nav:false});

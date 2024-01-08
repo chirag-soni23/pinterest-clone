@@ -61,5 +61,8 @@ function isLoggedin(req,res,next){
   }
   res.redirect("/profile")
 }
+router.get("/add",isLoggedin,async(req,res)=>{
+  res.render('add',{nav:true})
+})
 
 module.exports = router;

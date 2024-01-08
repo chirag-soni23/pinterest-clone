@@ -27,8 +27,11 @@ router.post("/login",passport.authenticate("local",{
   successRedirect : "/profile",
   failureFlash: true
 }))
-router.post("/upload" ,isLoggedin,upload.single('image'),(req,res,next)=>{
-  res.send('upload')
+router.post("/upload" ,isLoggedin,upload.single('image'),async(req,res,next)=>{
+  const user = await userModel.findOne({username: req.session.passport.user})
+  user.profileImage = req.file.filename;
+  await user.save()
+  res.redirect("/profile")
 })
 
 

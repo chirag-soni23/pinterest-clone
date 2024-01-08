@@ -1,3 +1,18 @@
 <% include ./partials/header.ejs %>
-<div class="w-full h-screen bg-gray-900"></div>
+<div class="w-full h-screen bg-gray-900 px-10 py-5 text-white">
+    <h1 class="text-xl">Create a new post</h1>
+    <hr class="opacity-10 mt-3">
+    <form action="/create-post" method="post" enctype="multipart/form-data" class="mt-5">
+        <label for="title" class="block text-white">Title:</label>
+        <input type="text" id="title" name="title" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4" required>
+
+        <label for="content" class="block text-white">Content:</label>
+        <textarea id="content" name="content" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4" required></textarea>
+
+        <label for="image" class="block text-white">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" class="bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4">
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Create Post</button>
+    </form>
+</div>
 <% include ./partials/footer.ejs %>

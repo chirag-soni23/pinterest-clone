@@ -3,7 +3,6 @@
   <header class="bg-gray-800 p-4 w-full  border-b-2 border-white">
     <div class="container mx-auto flex items-center justify-between">
       <div>
-       
         <img
           class="w-32"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pinterest_Logo.svg/1200px-Pinterest_Logo.svg.png"
@@ -30,7 +29,7 @@
   </header>
   <div class="flex flex-col items-center justify-center mt-4">
     <div class="relative">
-      <span class="cursor-pointer bg-white w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
+      <span id="upload" class="cursor-pointer bg-white w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
         <i class="text-gray-400 ri-pencil-fill"></i>
       </span>
       <img
@@ -38,7 +37,6 @@
         alt="Profile Picture"
         class="w-32 h-32 rounded-full"
       />
-
     </div>
     <div class="ml-4 flex justify-center items-center flex-col gap-1">
       <h1 class="text-2xl font-bold text-white"><%= user.username %></h1>
@@ -49,24 +47,36 @@
         >Edit</a
       >
       <button class="text-white py-2 px-10 rounded-lg bg-red-700 mt-4">Add New Post</button>
+      <!-- Post creation form (hidden by default) -->
+      <div id="postForm" class=" mt-4">
+        <form hidden action="/upload" method="POST" enctype="multipart/form-data">
+          <input type="file" name="image">
+         
+        </form>
+      </div>
     </div>
   </div>
   <!-- cards -->
   <div class="cards justify-center items-center flex flex-wrap gap-10 mt-10">
     <div class="card">
-   
-       
-        <div class="w-52 h-40 bg-gray-400 rounded-lg overflow-hidden">
-<img class="object-cover w-full h-full" src="https://i.pinimg.com/236x/e9/b6/8b/e9b68bff54a5349786a4340eeed5b453.jpg" alt="">
-        
-
+      <div class="w-52 h-40 bg-gray-400 rounded-lg overflow-hidden">
+        <img class="object-cover w-full h-full" src="https://i.pinimg.com/236x/e9/b6/8b/e9b68bff54a5349786a4340eeed5b453.jpg" alt="">
       </div>
-     
       <h3 class="text-xl font-semibold mt-3 text-white">All pins</h3>
       <h5 class="text-sm font-medium text-gray-400">28 pins</h5>
     </div>
-   
   </div>
 </div>
+<script>
+  document.querySelector("#upload").addEventListener("click",()=>{
+    document.querySelector("form input").click()
+
+  })
+  document.querySelector('form input').addEventListener('change',()=>{
+    document.querySelector("form").submit()
+  })
+</script>
+
+
 
 <% include ./partials/footer.ejs %>

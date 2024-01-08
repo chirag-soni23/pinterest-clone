@@ -16,14 +16,14 @@ router.post("/register",(req,res)=>{
   userModel.register(data,req.body.password)
   .then(()=>{
     passport.authenticate("local")(req,res,function(){
-      res.redirect("/login")
+      res.redirect("/")
     })
   })
   
 })
 
-router.post("/login",passport.authenticate("local",{
-  failureRedirect : "/login",
+router.post("/",passport.authenticate("local",{
+  failureRedirect : "/",
   successRedirect : "/profile",
   failureFlash: true
 }))
@@ -36,7 +36,7 @@ router.post("/upload" ,isLoggedin,upload.single('image'),async(req,res,next)=>{
 
 
 // get methods
-router.get('/login', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('login',{error: req.flash('error'),nav:false});
 });
 router.get('/register', function(req, res, next) {
@@ -51,7 +51,7 @@ router.get("/profile",isLoggedin,async(req,res)=>{
 router.get("/logout",(req,res,next)=>{
   req.logout(function(err) {
     if (err) { return next(err); }
-    res.redirect('/login');
+    res.redirect('/');
   });
 
 })

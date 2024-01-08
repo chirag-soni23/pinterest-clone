@@ -6,6 +6,7 @@
 html , body{
     height: 100%;
      width: 100%;
+     background-color: #111827;
 }
 .login{
   background-image: url("https://wallpapercave.com/wp/wp9764093.jpg");
@@ -18,10 +19,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
 }
 .err{
   color: red;

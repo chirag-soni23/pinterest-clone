@@ -3,10 +3,8 @@ var router = express.Router();
 const userModel = require("./users.js");
 const passport = require('passport');
 const localStrategy = require("passport-local")
+const upload = require("./multer.js")
 passport.use(new localStrategy(userModel.authenticate()))
-
-
-
 // post methods
 router.post("/register",(req,res)=>{
   const data = new userModel({
@@ -29,6 +27,9 @@ router.post("/login",passport.authenticate("local",{
   successRedirect : "/profile",
   failureFlash: true
 }))
+router.post("/upload" ,isLoggedin,upload.single('image'),(req,res,next)=>{
+  res.send('upload')
+})
 
 
 // get methods

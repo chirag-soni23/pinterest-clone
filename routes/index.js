@@ -13,7 +13,8 @@ router.post("/register",(req,res)=>{
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
-    contact: req.body.contact
+    contact: req.body.contact,
+    name: req.body.fullname
   })
   userModel.register(data,req.body.password)
   .then(()=>{

@@ -4,13 +4,13 @@
     <hr class="opacity-10 mt-3">
     <form action="/createpost" method="post" enctype="multipart/form-data" class="mt-5">
         <label for="title" class="block text-white">Title:</label>
-        <input type="text" id="title" name="title" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4" required>
+        <input type="text" id="title" name="title" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4" >
 
         <label for="content" class="block text-white">Content:</label>
-        <textarea id="content" name="content" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4" required></textarea>
+        <textarea id="content" name="content" class="w-full bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4"></textarea>
 
         <label for="postimage" class="block text-white">Upload Image:</label>
-        <input type="file" id="image" name="postimage" accept="image/*" class="bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4">
+        <input type="file" name="postimage" class="bg-gray-800 border border-gray-700 text-white py-2 px-3 rounded mt-1 mb-4">
 
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Create Post</button>
     </form>

@@ -7,6 +7,7 @@ const localStrategy = require("passport-local")
 const upload = require("./multer.js")
 passport.use(new localStrategy(userModel.authenticate()))
 // post methods
+
 router.post("/register",(req,res)=>{
   const data = new userModel({
     username: req.body.username,
@@ -36,8 +37,7 @@ router.post("/upload" ,isLoggedin,upload.single('image'),async(req,res,next)=>{
 })
 router.post("/createpost" ,isLoggedin,upload.single('postimage'),async(req,res,next)=>{
   const user = await userModel.findOne({username: req.session.passport.user})
-  // user.profileImage = req.file.filename;
-  const post  = postModel.create({
+  const post  = await postModel.create({
     user: user._id,
     title: req.body.title,
     content: req.body.content,
@@ -55,9 +55,10 @@ router.get('/register', function(req, res, next) {
   res.render('register',{nav:false});
 });
 router.get("/profile",isLoggedin,async(req,res)=>{
-  const user = await userModel.findOne({
-    username: req.session.passport.user
-  })
+  const user = await userModel
+  .findOne({ username: req.session.passport.user})
+  .populate('posts')
+  //console.log(user.posts[0].image)
   res.render('profile',{user,nav:true})
 })
 router.get("/logout",(req,res,next)=>{
@@ -67,14 +68,16 @@ router.get("/logout",(req,res,next)=>{
   });
 
 })
+router.get("/add",isLoggedin,async(req,res)=>{
+  const user = await userModel.findOne({username: req.session.passport.user})
+    res.render('add',{user,nav:true})
+})
 function isLoggedin(req,res,next){
   if(req.isAuthenticated()){
     return next()
   }
   res.redirect("/profile")
 }
-router.get("/add",isLoggedin,async(req,res)=>{
-  res.render('add',{nav:true})
-})
+
 
 module.exports = router;

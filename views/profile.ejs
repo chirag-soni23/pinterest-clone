@@ -34,13 +34,12 @@
     <div class="cards justify-center items-center flex flex-wrap gap-10 mt-10">
       <div class="card">
         <div class="w-52 h-40 bg-gray-400 rounded-lg overflow-hidden">
-          <img class="object-cover w-full h-full" src="https://i.pinimg.com/236x/e9/b6/8b/e9b68bff54a5349786a4340eeed5b453.jpg" alt="">
+          <img class="object-cover w-full h-full" src="/images/uploads/<%= user.posts[0].image %>" alt="">
         </div>
         <h3 class="text-xl font-semibold mt-3 text-white">All pins</h3>
-        <h5 class="text-sm font-medium text-gray-400">28 pins</h5>
+        <h5 class="text-sm font-medium text-gray-400"><%= user.posts.length %></h5>
       </div>
-     
-    </div>
+        </div>
 
   </div>
 </div>
@@ -53,7 +52,4 @@
     document.querySelector("form").submit()
   })
 </script>
-
-
-
 <% include ./partials/footer.ejs %>

@@ -72,6 +72,12 @@ router.get("/add",isLoggedin,async(req,res)=>{
   const user = await userModel.findOne({username: req.session.passport.user})
     res.render('add',{user,nav:true})
 })
+router.get("/show/posts",isLoggedin,async(req,res)=>{
+  const user = await userModel
+  .findOne({ username: req.session.passport.user})
+  .populate('posts')
+  res.render('show',{user,nav:true})
+})
 function isLoggedin(req,res,next){
   if(req.isAuthenticated()){
     return next()

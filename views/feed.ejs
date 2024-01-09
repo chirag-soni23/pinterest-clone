@@ -1,0 +1,18 @@
+<% include ./partials/header.ejs %>
+<div class="w-full min-h-screen bg-gray-900 px-10 py-8 text-white">
+  <div class="card flex flex-wrap gap-10">
+    <% posts.forEach((elem) => { %>
+    <div class="w-32">
+      <div class="card w-32 h-40 bg-blue-200 rounded-lg overflow-hidden">
+        <img
+          class="w-full h-full object-cover"
+          src="/images/uploads/<%= elem.image %>"
+          alt=""
+        />
+      </div>
+      <h5 class="mt-2 text-sm"><%= elem.title %></h5>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<% include ./partials/footer.ejs %>
